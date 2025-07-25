@@ -152,6 +152,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    // Quick fix: unregister any Service Worker to avoid stale cache
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+    }
+  </script>
+  <script>
     // Sidebar toggle
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.getElementById('sidebar');
